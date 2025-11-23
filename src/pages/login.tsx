@@ -65,7 +65,7 @@ export function Login() {
             Entrar
           </button>
 
-          {/* 🔗 LINK PARA CADASTRO */}
+          
           <p className="text-center text-gray-600 mt-2">
             Ainda não tem conta?{" "}
             <Link

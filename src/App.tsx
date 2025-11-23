@@ -17,6 +17,10 @@ import { AddProjetos } from "./pages/add-projetos";
 import { ProjetosPessoais } from "./pages/projetos-pessoais";
 import { MetaPage } from "./pages/meta";
 import { Dashboard } from "./pages/dashboard";
+import { Contato } from './pages/contato';
+import { Integrantes } from './pages/integrantes';
+import { FAQ } from './pages/faq';
+import { Sobre } from './pages/sobre';
 
 interface PrivateRouteProps {
   children: React.ReactNode;
@@ -101,6 +105,42 @@ function App() {
                   element={
                     <PrivateRoute>
                       <Dashboard />
+                    </PrivateRoute>
+                  }
+                />
+
+                <Route
+                  path="contato"
+                  element={
+                    <PrivateRoute>
+                      <Contato />
+                    </PrivateRoute>
+                  }
+                />
+
+                <Route
+                  path="integrantes"
+                  element={
+                    <PrivateRoute>
+                      <Integrantes />
+                    </PrivateRoute>
+                  }
+                />
+
+                <Route
+                  path="faq"
+                  element={
+                    <PrivateRoute>
+                      <FAQ />
+                    </PrivateRoute>
+                  }
+                />
+
+                <Route
+                  path="sobre"
+                  element={
+                    <PrivateRoute>
+                      <Sobre />
                     </PrivateRoute>
                   }
                 />
