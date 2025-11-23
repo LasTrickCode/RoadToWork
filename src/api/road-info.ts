@@ -1,0 +1,1 @@
+export const API_ROAD = import.meta.env.VITE_API_ROAD;
