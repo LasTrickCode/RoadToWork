@@ -24,7 +24,7 @@ export function Dashboard() {
     carregarDashboard();
   }, [user?.id]);
 
-  // --- ESTADO DE CARREGAMENTO ---
+  
   if (loading || !dados) {
     return (
       <div className="min-h-screen flex items-center justify-center text-lg font-semibold text-slate-700">
@@ -56,7 +56,7 @@ export function Dashboard() {
 
       <div className="w-full max-w-4xl space-y-8 animate-in fade-in slide-in-from-top-4 duration-500">
 
-        {/* PROGRESSO DA META (BARRA GRANDE) */}
+        {/* META */}
         <div className={`bg-white shadow-xl rounded-3xl p-8 border border-slate-100 ${isMetaConcluida ? 'border-emerald-200' : 'border-indigo-200'}`}>
           <div className="flex justify-between items-start mb-3">
             <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-3">

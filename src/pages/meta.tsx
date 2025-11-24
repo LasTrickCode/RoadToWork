@@ -26,7 +26,7 @@ export function MetaPage() {
     carregarMeta();
   }, [user?.id]);
 
-  // --- ESTADO DE CARREGAMENTO ---
+  
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-lg font-semibold text-slate-700">
@@ -39,7 +39,6 @@ export function MetaPage() {
     );
   }
 
-  // --- NENHUMA META ENCONTRADA ---
   if (!meta) {
     return (
         <div className="max-w-2xl mx-auto mt-12 p-8 text-center bg-white shadow-xl rounded-3xl border border-slate-100">
@@ -53,9 +52,9 @@ export function MetaPage() {
     );
   }
 
-  // --- CÁLCULO DE PROGRESSO ---
+ 
   const progresso = (meta.atual / meta.metaTotal) * 100;
-  // Garante que a barra não estoure o layout, mesmo se o valor for > 100
+ 
   const widthProgresso = progresso > 100 ? 100 : progresso;
   const isConcluida = progresso >= 100;
   const barraCor = isConcluida ? "bg-emerald-600 shadow-emerald-500/30" : "bg-indigo-600 shadow-indigo-500/30";
@@ -86,7 +85,7 @@ export function MetaPage() {
                 </p>
             </div>
 
-            {/* BARRA DE PROGRESSO */}
+            
             <div className="w-full bg-slate-200 rounded-full h-8 overflow-hidden shadow-inner relative">
                 <div
                     className={`h-full transition-all duration-700 ease-out ${barraCor}`}
@@ -98,7 +97,7 @@ export function MetaPage() {
                 </span>
             </div>
 
-            {/* MENSAGEM DE STATUS */}
+            
             {isConcluida ? (
                 <div className="text-center mt-6 p-4 bg-emerald-50 rounded-xl border border-emerald-200">
                     <p className="text-emerald-700 font-bold text-lg">

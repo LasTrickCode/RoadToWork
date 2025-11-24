@@ -50,7 +50,7 @@ export function FAQ() {
         </p>
       </div>
 
-      {/* GRID DE PERGUNTAS */}
+      
       <div className="max-w-5xl mx-auto grid gap-6 md:grid-cols-2">
         {faqData.map((item, index) => (
           <div
@@ -58,7 +58,7 @@ export function FAQ() {
             className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-indigo-100 transition-all duration-300 group"
           >
             <div className="flex items-start gap-4">
-              {/* Ícone Q (Question) */}
+              
               <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
                 ?
               </div>
@@ -76,7 +76,7 @@ export function FAQ() {
         ))}
       </div>
 
-      {/* FOOTER DE AJUDA */}
+      
       <div className="mt-16 text-center bg-white border border-slate-200 p-8 rounded-3xl max-w-3xl mx-auto shadow-lg shadow-slate-200/50">
         <h3 className="text-xl font-bold text-slate-900 mb-2">
           Ainda tem dúvidas?
