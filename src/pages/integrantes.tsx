@@ -6,20 +6,20 @@ export function Integrantes() {
     {
       name: "Richard Emiliano",
       rm: "562245",
-      initials: "RE",
+      photoUrl: "https://media.licdn.com/dms/image/v2/D4D03AQFjEV1M6ssljQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710510171753?e=1765411200&v=beta&t=RxNKa-upVWho8OTBVo5Mks9-Hxp6VJE3HG2C-uEzy7E", // <-- URL da Foto
       github: "https://github.com/RichardXIII",
       repo: "https://github.com/LasTrickCode/NotifMais/tree/main", // Link extra específico
     },
     {
       name: "Daniel Almeida",
       rm: "563045",
-      initials: "DA",
+      photoUrl: "https://media.licdn.com/dms/image/v2/D5603AQHgcq05M-idVw/profile-displayphoto-shrink_200_200/B56ZbrIeJ2H4AY-/0/1747701589728?e=1765411200&v=beta&t=lciiL5bSx0DrmeSuAeT9K1qYaI_nKJ3DagrAM0Tm-hs", // <-- URL da Foto
       github: "https://github.com/dnl-alm",
     },
     {
       name: "Pedro Almeida",
       rm: "563466",
-      initials: "PA",
+      photoUrl: "https://media.licdn.com/dms/image/v2/D4D03AQE4jkvDi2d9xg/profile-displayphoto-shrink_200_200/B4DZbrKn3RH8AY-/0/1747702153438?e=1765411200&v=beta&t=XzMdSdGE6hzDJM2nBahbw-58wtg_1Dt_6Byur_4UvKs", // <-- URL da Foto
       github: "https://github.com/PedroF1205",
     },
   ];
@@ -50,11 +50,14 @@ export function Integrantes() {
             {/* Decoração de Fundo (Glow ao passar o mouse) */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-violet-50 opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-300 -z-10" />
 
-            {/* AVATAR COM INICIAIS */}
-            <div className="w-24 h-24 mb-6 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform duration-300">
-              <span className="text-3xl font-bold text-white tracking-wider">
-                {member.initials}
-              </span>
+            {/* AVATAR COM FOTO (Alterado) */}
+            <div className="w-24 h-24 mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform duration-300">
+                {/* O elemento IMG substitui o span de iniciais */}
+                <img 
+                    src={member.photoUrl} 
+                    alt={`Foto de ${member.name}`} 
+                    className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+                />
             </div>
 
             {/* INFORMAÇÕES */}
