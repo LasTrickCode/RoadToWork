@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# Global Solution - RoadToWork
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Sistema desenvolvido no contexto da entrega da GlobalSolution, SPA focada na criação e manipulação de tarefas por usuario.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Informações do Projeto
 
-## React Compiler
+### Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **TypeScript** — para tipagem forte no frontend  
+- **React** / **React Router Dom** — para a interface e rotas  
+- **Vite** — ferramenta de bundling / scaffolding  
+- **JavaScript / HTML / CSS / Tailwind** — estrutura básica do app web  
+- Outras dependências conforme o `package.json`  
 
-## Expanding the ESLint configuration
+### Integrantes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Richard Emiliano Rodrigues da silva - Desenvolvimento das paginas e estilização 
+- Daniel Fonseca de almeida - Desenvolvimento de Componentes e lógica  
+- Pedro Fonseca de almeida - Desenvolvimento de Componentes 
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📁 Estrutura de Pastas do Projeto
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Aqui está a estrutura do repositório 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+├── src
+│ ├── api
+│ ├── assets
+│ ├── components
+│ ├── context
+│ ├── pages
+│ ├── types
+│ ├── App.tsx
+│ └── main.tsx
+├── .gitignore
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+└── README.md
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠 Como Executar / Usar
+
+1. Clone o repositório  
+   ```bash
+   git clone https://github.com/LasTrickCode/RoadToWork
+
+   cd RoadToWork
+
+   npm install
+   npm run dev
+
+  Acesse no navegador
+
+   Vercel:
+   
+ 
+  Confira o vídeo demonstrativo do sistema no YouTube:
+   [https://youtu.be/dKhjaabdqh4]("https://youtu.be/dKhjaabdqh4")
+
+  Descrição das Funcionalidades
+
+  Seleção de usuarios da API   
+  Listagem de Tarefas criadas pela API
+  Navegação e atualização entre telas (formulário, listagem, detalhes)

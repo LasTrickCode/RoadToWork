@@ -10,7 +10,7 @@ export function Cadastro() {
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
   const [sucesso, setSucesso] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // Adicionado para controle de loading
+  const [isSubmitting, setIsSubmitting] = useState(false); 
 
   async function handleCadastro(e: React.FormEvent) {
     e.preventDefault();
@@ -32,7 +32,7 @@ export function Cadastro() {
       });
 
       if (!response.ok) {
-        // Assume que 409 (Conflict) ou 400 (Bad Request) é um erro de email já cadastrado.
+    
         const errorData = await response.json(); 
         const errorMessage = errorData.message || "Erro ao cadastrar. Tente outro email.";
         setErro(errorMessage);
@@ -49,8 +49,7 @@ export function Cadastro() {
       console.error("Erro:", error);
       setErro("Erro ao conectar com o servidor.");
     } finally {
-      // O reset da flag isSubmitting só ocorrerá se o navigate não tiver sido executado
-      // ou se houver um erro, mas é importante ter o reset aqui.
+
       if (!sucesso) { 
          setIsSubmitting(false);
       }
@@ -61,7 +60,7 @@ export function Cadastro() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50/70 p-4 sm:p-6">
       <div className="bg-white shadow-2xl shadow-indigo-100/50 rounded-3xl p-8 md:p-10 w-full max-w-md border border-slate-100 animate-in fade-in slide-in-from-top-4 duration-500">
         
-        {/* HEADER */}
+        
         <div className="text-center mb-8">
             <div className="w-16 h-16 mx-auto rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 mb-4">
                 {/* Ícone de Usuário/Registro */}
@@ -79,7 +78,7 @@ export function Cadastro() {
 
         <form onSubmit={handleCadastro} className="flex flex-col gap-5">
 
-          {/* CAMPO NOME */}
+          
           <input
             type="text"
             placeholder="Seu nome completo"
@@ -88,7 +87,7 @@ export function Cadastro() {
             className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all duration-200"
           />
 
-          {/* CAMPO EMAIL */}
+          
           <input
             type="email"
             placeholder="Seu melhor e-mail"
@@ -97,7 +96,7 @@ export function Cadastro() {
             className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all duration-200"
           />
 
-          {/* CAMPO SENHA */}
+          
           <input
             type="password"
             placeholder="Crie uma senha forte"
@@ -106,7 +105,7 @@ export function Cadastro() {
             className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all duration-200"
           />
 
-          {/* FEEDBACK DE ERRO */}
+          
           {erro && (
             <div className="bg-red-50 border border-red-100 text-red-600 text-sm px-4 py-3 rounded-xl flex items-center justify-center gap-2">
                 <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -114,7 +113,7 @@ export function Cadastro() {
             </div>
           )}
 
-          {/* FEEDBACK DE SUCESSO */}
+          
           {sucesso && (
             <div className="bg-emerald-50 border border-emerald-100 text-emerald-600 text-sm px-4 py-3 rounded-xl flex items-center justify-center gap-2">
                 <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -130,7 +129,7 @@ export function Cadastro() {
           >
              {isSubmitting ? (
                 <>
-                    {/* Spinner de Loading SVG */}
+                    
                     <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>

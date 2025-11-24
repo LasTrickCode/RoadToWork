@@ -9,7 +9,7 @@ export function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // Adicionado para controle de loading
+  const [isSubmitting, setIsSubmitting] = useState(false); 
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -30,19 +30,19 @@ export function Login() {
       return;
     }
 
-    // Redireciona após sucesso
+    
     navigate("/");
-    setIsSubmitting(false); // Embora o navigate saia do componente, é bom resetar por segurança
+    setIsSubmitting(false); 
   }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50/70 p-4 sm:p-6">
       <div className="bg-white shadow-2xl shadow-indigo-100/50 rounded-3xl p-8 md:p-10 w-full max-w-md border border-slate-100 animate-in fade-in slide-in-from-top-4 duration-500">
         
-        {/* HEADER */}
+        
         <div className="text-center mb-8">
             <div className="w-16 h-16 mx-auto rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 mb-4">
-                {/* Ícone de Cadeado/Login */}
+               
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
@@ -57,7 +57,7 @@ export function Login() {
 
         <form onSubmit={handleLogin} className="flex flex-col gap-5">
           
-          {/* INPUT EMAIL */}
+          
           <input
             type="email"
             placeholder="E-mail"
@@ -66,7 +66,7 @@ export function Login() {
             className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all duration-200"
           />
 
-          {/* INPUT SENHA */}
+          
           <input
             type="password"
             placeholder="Senha"
@@ -75,7 +75,7 @@ export function Login() {
             className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all duration-200"
           />
 
-          {/* FEEDBACK DE ERRO */}
+         
           {erro && (
             <div className="bg-red-50 border border-red-100 text-red-600 text-sm px-4 py-3 rounded-xl flex items-center justify-center gap-2">
                 <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -83,7 +83,7 @@ export function Login() {
             </div>
           )}
 
-          {/* BOTÃO DE SUBMIT */}
+          
           <button
             type="submit"
             disabled={isSubmitting}
@@ -104,7 +104,7 @@ export function Login() {
           </button>
 
           
-          {/* LINK DE CADASTRO */}
+          
           <p className="text-center text-slate-500 mt-2 text-sm">
             Ainda não tem conta?{" "}
             <Link

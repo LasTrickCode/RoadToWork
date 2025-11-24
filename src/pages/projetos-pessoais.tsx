@@ -188,7 +188,7 @@ export function ProjetosPessoais() {
           </div>
         </div>
 
-        {/* COLUNA CONCLUÍDOS */}
+        
         <div>
           <h2 className="text-2xl font-semibold text-emerald-600 mb-6 flex items-center gap-2">
             <span className="text-3xl"></span> Concluídos
@@ -209,7 +209,6 @@ export function ProjetosPessoais() {
 
       </div>
 
-      {/* --- MODAL DE EDIÇÃO --- */}
       {editando && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 animate-in fade-in">
           <div className="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md animate-in zoom-in-95 duration-300">

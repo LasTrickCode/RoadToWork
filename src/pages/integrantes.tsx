@@ -1,33 +1,36 @@
 import { Link } from "react-router-dom";
 
 export function Integrantes() {
-  // Dados dos integrantes organizados em array para facilitar manutenção
+  // Dados dos integrantes 
   const members = [
     {
       name: "Richard Emiliano",
       rm: "562245",
-      initials: "RE",
+      photoUrl: "https://media.licdn.com/dms/image/v2/D4D03AQFjEV1M6ssljQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710510171753?e=1765411200&v=beta&t=RxNKa-upVWho8OTBVo5Mks9-Hxp6VJE3HG2C-uEzy7E", 
       github: "https://github.com/RichardXIII",
-      repo: "https://github.com/LasTrickCode/NotifMais/tree/main", // Link extra específico
+      linkedin: "https://www.linkedin.com/in/richardemilianorodrigues/", 
+      repo: "https://github.com/LasTrickCode/NotifMais/tree/main", 
     },
     {
       name: "Daniel Almeida",
       rm: "563045",
-      initials: "DA",
+      photoUrl: "https://media.licdn.com/dms/image/v2/D5603AQHgcq05M-idVw/profile-displayphoto-shrink_200_200/B56ZbrIeJ2H4AY-/0/1747701589728?e=1765411200&v=beta&t=lciiL5bSx0DrmeSuAeT9K1qYaI_nKJ3DagrAM0Tm-hs", 
       github: "https://github.com/dnl-alm",
+      linkedin: "https://www.linkedin.com/in/daniel-fonseca-de-almeida-b12741366/", 
     },
     {
       name: "Pedro Almeida",
       rm: "563466",
-      initials: "PA",
+      photoUrl: "https://media.licdn.com/dms/image/v2/D4D03AQE4jkvDi2d9xg/profile-displayphoto-shrink_200_200/B4DZbrKn3RH8AY-/0/1747702153438?e=1765411200&v=beta&t=XzMdSdGE6hzDJM2nBahbw-58wtg_1Dt_6Byur_4UvKs", 
       github: "https://github.com/PedroF1205",
+      linkedin: "https://www.linkedin.com/in/pedro-fonseca-de-almeida-5b6019367/", 
     },
   ];
 
   return (
     <div className="min-h-[80vh] w-full flex flex-col items-center justify-center py-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
       
-      {/* CABEÇALHO DA SEÇÃO */}
+      {/* CABEÇALHO */}
       <div className="text-center mb-16 space-y-4">
         <span className="px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-sm font-bold tracking-widest uppercase border border-indigo-100">
           Turma 1TDSPV
@@ -47,14 +50,16 @@ export function Integrantes() {
             key={member.rm}
             className="group relative bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-indigo-100"
           >
-            {/* Decoração de Fundo (Glow ao passar o mouse) */}
+           
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-violet-50 opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-300 -z-10" />
 
-            {/* AVATAR COM INICIAIS */}
-            <div className="w-24 h-24 mb-6 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform duration-300">
-              <span className="text-3xl font-bold text-white tracking-wider">
-                {member.initials}
-              </span>
+            {/*FOTO */}
+            <div className="w-24 h-24 mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform duration-300">
+                <img 
+                    src={member.photoUrl} 
+                    alt={`Foto de ${member.name}`} 
+                    className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+                />
             </div>
 
             {/* INFORMAÇÕES */}
@@ -65,8 +70,24 @@ export function Integrantes() {
               RM: {member.rm}
             </p>
 
-            {/* BOTÕES DE AÇÃO */}
+            {/* BOTÕES */}
             <div className="w-full mt-auto space-y-3">
+               
+               {member.linkedin && (
+                <Link
+                  to={member.linkedin}
+                  target="_blank"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-white bg-[#0A66C2] hover:bg-[#084A97] shadow-lg shadow-blue-500/30 transition-all active:scale-95"
+                >
+                  
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.565-4 0v5.604h-3v-11h3v1.765c1.395-2.586 7-2.762 7 2.453v6.782z" />
+                  </svg>
+                  Perfil LinkedIn
+                </Link>
+              )}
+              
+              
               <Link
                 to={member.github}
                 target="_blank"
@@ -79,7 +100,7 @@ export function Integrantes() {
                 Perfil GitHub
               </Link>
 
-              {/* Botão Condicional para Repositório (Só aparece se existir no objeto) */}
+              
               {member.repo && (
                 <Link
                   to={member.repo}
