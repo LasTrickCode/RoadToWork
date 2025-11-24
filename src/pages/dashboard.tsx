@@ -24,64 +24,108 @@ export function Dashboard() {
     carregarDashboard();
   }, [user?.id]);
 
+  // --- ESTADO DE CARREGAMENTO ---
   if (loading || !dados) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-lg font-semibold">
-        Carregando Dashboard...
+      <div className="min-h-screen flex items-center justify-center text-lg font-semibold text-slate-700">
+        <svg className="animate-spin h-6 w-6 mr-3 text-indigo-500" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Carregando seu Dashboard...
       </div>
     );
   }
 
   const progressoMeta = (dados.metaAtual / dados.metaTotal) * 100;
+  const widthProgresso = progressoMeta > 100 ? 100 : progressoMeta;
+  const isMetaConcluida = progressoMeta >= 100;
 
   return (
-    <div className="min-h-screen p-6 flex flex-col items-center bg-gray-100">
-      <h1 className="text-3xl font-bold text-blue-700 mb-8">Dashboard</h1>
+    <div className="min-h-screen p-6 md:p-12 flex flex-col items-center bg-slate-50/50">
+        
+      {/* CABEÇALHO */}
+      <div className="max-w-4xl w-full mx-auto mb-10">
+        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">
+          Dashboard de Progresso
+        </h1>
+        <p className="text-lg text-slate-500 mt-1">
+            Visão geral de suas metas e conquistas.
+        </p>
+      </div>
 
-      <div className="w-full max-w-4xl space-y-8">
+      <div className="w-full max-w-4xl space-y-8 animate-in fade-in slide-in-from-top-4 duration-500">
 
-        {/* PROGRESSO DA META */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 border-l-4 border-blue-600">
-          <h2 className="text-xl font-semibold text-gray-800 mb-3">
-            Progresso da Meta
-          </h2>
-
-          <div className="w-full bg-gray-200 h-6 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-blue-600 transition-all"
-              style={{ width: `${progressoMeta}%` }}
-            ></div>
+        {/* PROGRESSO DA META (BARRA GRANDE) */}
+        <div className={`bg-white shadow-xl rounded-3xl p-8 border border-slate-100 ${isMetaConcluida ? 'border-emerald-200' : 'border-indigo-200'}`}>
+          <div className="flex justify-between items-start mb-3">
+            <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-3">
+                <span className={`text-3xl ${isMetaConcluida ? 'text-emerald-600' : 'text-indigo-600'}`}>
+                    {isMetaConcluida ? '' : ''}
+                </span>
+                Progresso da Meta
+            </h2>
+            <p className="text-xl font-bold text-slate-700">
+                {Math.round(progressoMeta)}%
+            </p>
           </div>
 
-          <p className="mt-2 text-gray-700 font-medium">
-            {dados.metaAtual} / {dados.metaTotal}
-          </p>
+          {/* BARRA DE PROGRESSO */}
+          <div className="w-full bg-slate-200 h-8 rounded-full overflow-hidden shadow-inner relative">
+            <div
+              className={`h-full transition-all duration-700 ease-out 
+                ${isMetaConcluida 
+                    ? "bg-emerald-600 shadow-lg shadow-emerald-500/40" 
+                    : "bg-indigo-600 shadow-lg shadow-indigo-500/40"
+                }`}
+              style={{ width: `${widthProgresso}%` }}
+            ></div>
+            <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white mix-blend-difference">
+                 {dados.metaAtual} / {dados.metaTotal}
+            </span>
+          </div>
 
           {dados.metaConcluida && (
-            <p className="text-green-600 font-bold mt-2">🎉 Meta concluída!</p>
+            <p className="text-emerald-600 font-bold mt-4 text-center">
+                 Parabéns, a meta foi concluída!
+            </p>
           )}
         </div>
 
-        {/* ESTATÍSTICAS */}
+        {/* ESTATÍSTICAS (CARDS) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
           {/* TAREFAS */}
-          <div className="bg-white shadow-lg rounded-2xl p-6 border-l-4 border-yellow-500">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              Tarefas Concluídas
-            </h3>
-            <p className="text-3xl font-bold text-yellow-600">
+          <div className="bg-white shadow-xl rounded-3xl p-8 border border-slate-100 hover:border-amber-300 transition-colors">
+            <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">
+                Tarefas Concluídas
+                </h3>
+                <span className="text-amber-500 text-3xl"></span>
+            </div>
+            
+            <p className="text-4xl font-extrabold text-amber-600 mt-2">
               {dados.tarefasConcluidas}
+            </p>
+            <p className="text-sm text-slate-500 mt-1">
+                Total de atividades finalizadas.
             </p>
           </div>
 
           {/* PROJETOS */}
-          <div className="bg-white shadow-lg rounded-2xl p-6 border-l-4 border-purple-600">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              Projetos Concluídos
-            </h3>
-            <p className="text-3xl font-bold text-purple-600">
+          <div className="bg-white shadow-xl rounded-3xl p-8 border border-slate-100 hover:border-violet-300 transition-colors">
+            <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">
+                Projetos Finalizados
+                </h3>
+                <span className="text-violet-500 text-3xl"></span>
+            </div>
+            
+            <p className="text-4xl font-extrabold text-violet-600 mt-2">
               {dados.projetosConcluidos}
+            </p>
+            <p className="text-sm text-slate-500 mt-1">
+                Projetos prontos para o seu portfólio.
             </p>
           </div>
 
